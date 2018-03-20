@@ -13,7 +13,7 @@ declare var $: any;
   styleUrls: ['./sesion.component.css']
 })
 export class SesionComponent implements OnInit {
-  BASE_URL = 'http://localhost:8000/rest-auth/login/';
+  BASE_URL = 'http://188.166.252.214/rest-auth/login/';
   @Input() login: boolean;
   @Output() setLoginValue: EventEmitter<any> = new EventEmitter<any>();
   error_fields = false;
