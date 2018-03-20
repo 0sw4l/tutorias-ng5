@@ -1,0 +1,77 @@
+<div class="container pull-bottom-5p">
+  <div class="row">
+    <div class="col-md-4">
+      <h2 class="text-center">
+        <i class="fa fa-lightbulb-o text-yellow"></i> Todas las materias
+      </h2>
+      <ng-container *ngFor="let materia of materias">
+        <button type="button" class="btn btn-outline-success" (click)="addMateriaUser(materia.id)">
+          {{ materia.nombre }}
+        </button>
+      </ng-container>
+    </div>
+    <div class="col-md-8">
+      <h2 class="text-center">
+        Mis materias <i class="fa fa-heart text-red"></i>
+      </h2>
+      <table class="table table-bordered table-striped table-heading table-hover">
+        <thead>
+        <tr>
+          <th class="text-center">
+            Materia
+          </th>
+          <th class="text-center">
+            Valor por hora
+          </th>
+          <th class="text-center">
+            Estado
+          </th>
+          <th class="text-center">
+            Acciones
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let materia_user of materias_usuario;">
+          <td class="text-center">
+            {{ materia_user.nombre }}
+          </td>
+          <td class="text-center">
+            <input id="input_{{ materia_user.id }}" type="number" class="form-control"
+                   value="{{ materia_user.precio }}">
+          </td>
+          <td class="text-center">
+            <strong class="text-success"
+                    matTooltip="Aprobada"
+                    [matTooltipPosition]="position"
+                    *ngIf="materia_user.oferta_aprobada; else noAprobada">
+              <i class="fa fa-check"></i>
+            </strong>
+            <ng-template #noAprobada>
+              <strong class="text-warning"
+                      matTooltip="Pendiente"
+                      [matTooltipPosition]="position">
+                <i class="fa fa-warning"></i>
+              </strong>
+            </ng-template>
+          </td>
+          <td class="text-center">
+            <button class="btn btn-outline-success"
+                    (click)="updatePricingMateriaUser(materia_user.id)"
+                    matTooltip="Guardar Cambios"
+                    [matTooltipPosition]="position">
+              <i class="fa fa-save"></i>
+            </button>
+            <button class="btn btn-outline-danger"
+                    (click)="deleteMateriaUser(materia_user.id)"
+                    matTooltip="Eliminar Oferta"
+                    [matTooltipPosition]="position">
+              <i class="fa fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

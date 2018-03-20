@@ -1,1 +1,82 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+.pull-bottom-10p {
+  margin-top: 10% !important;
+}
+
+
+.pull-bottom-5p {
+  margin-top: 5% !important;
+}
+
+.pull-bottom-2p {
+  margin-top: 2% !important;
+}
+
+.padding-top-1p {
+  padding-top: 1% !important;
+}
+
+
+.img-m-h-300px {
+  height: 200px !important;
+}
+
+
+.margin-bottom-5p {
+  margin-bottom: 5% !important;
+}
+
+
+.user {
+  color: greenyellow;
+  font-weight: 800;
+}
+
+.user-tutor {
+  color: #3f50b5 !important;
+}
+
+.list-view-item {
+  background-color: #748ae0;
+  color: white;
+  border-bottom-color: black;
+  margin-bottom: 1% !important;
+}
+
+.text-white {
+  color: white !important;
+}
+
+.bold {
+  font-weight: 800 !important;
+}
+
+.list-view-item:hover {
+  background-color: #3f50b5;
+}
+
+
+.list-group-item :first-child {
+  margin-right: 0;
+}
+
+.text-teal {
+  color: #009688;
+}
+
+.text-red {
+  color: #bb5a64;
+}
+
+.text-yellow {
+  color: #eec71a;
+}
+
+bootstrap-growl {
+  position:absolute;
+  right:8px;
+  top:8px;
+  z-index:10;
+}

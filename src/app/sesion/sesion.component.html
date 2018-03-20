@@ -1,0 +1,262 @@
+<div class="container" *ngIf="!registro">
+  <div class="row pull-bottom-5p">
+    <div class="col-md-4 offset-md-4">
+      <div class="card text-center">
+        <div class="card-header">
+          <h2 class="text-primary">
+            Iniciar Sesion
+          </h2>
+        </div>
+        <div class="card-block">
+          <p *ngIf="error_fields">
+            <strong class="text-danger">
+              Error, debe completar los campos
+            </strong>
+          </p>
+          <p *ngIf="error_user">
+            <strong class="text-danger">
+              {{ error_user_msg }}
+            </strong>
+          </p>
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <input
+                #user
+                [value]=""
+                (keyup.enter)="validateLogin(user.value, password_.value)"
+                id="user"
+                type="text"
+                class="form-control"
+                placeholder="Usuario">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <input
+                #password_
+                [value]=""
+                (keyup.enter)="validateLogin(user.value, password_.value)"
+                id="password_"
+                type="password"
+                class="form-control"
+                placeholder="Contraseña">
+            </div>
+          </div>
+        </div>
+        <div class="card-footer text-muted">
+          <button (click)="validateLogin(user.value, password_.value)"
+                  type="button"
+                  class="btn btn-primary active"
+                  role="button"
+                  aria-pressed="true">
+            Entrar
+            <i class="fa fa-sign-in"></i>
+          </button>
+          <button class="btn btn-success active"
+                  role="button"
+                  (click)="showRegistroForm()"
+                  aria-pressed="true">
+            <i class="fa fa-user-plus"></i>
+            Registrarse
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container" *ngIf="registro">
+  <div class="row pull-bottom-5p">
+    <div class="col-md-6 offset-md-3">
+      <div class="card text-center">
+        <form #form="ngForm" (ngSubmit)="validateRegister(form)">
+          <div class="card-header">
+            <h3 class="text-info">
+              Registro
+            </h3>
+          </div>
+          <div class="card-block">
+            <p *ngIf="error_register_fields">
+              <strong class="text-danger">
+                Revise los campos
+              </strong>
+            </p>
+            <p>
+              <strong class="text-danger">
+
+              </strong>
+            </p>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <input
+                  #username
+                  id="username"
+                  name="username"
+                  ngModel
+                  type="text"
+                  class="form-control"
+                  placeholder="Usuario"
+                  required
+                  minlength="5"
+                  maxlength="50"
+                  appForbiddenName="admin">
+
+                <strong class="bmd-label-static">
+                  Use entre 5 y 50 carácteres, sin espacios
+                </strong>
+
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-6">
+                <input
+                  #first_name
+                  id="first_name"
+                  name="first_name"
+                  ngModel
+                  type="text"
+                  class="form-control"
+                  placeholder="Nombres"
+                  minlength="1"
+                  maxlength="50"
+                  required>
+                <strong class="bmd-label-static">
+                  Use entre 1 y 50 carácteres, sin números
+                </strong>
+              </div>
+              <div class="form-group col-sm-6">
+                <input
+                  #last_name
+                  id="last_name"
+                  name="last_name"
+                  ngModel
+                  type="text"
+                  class="form-control"
+                  placeholder="Apellidos"
+                  minlength="1"
+                  maxlength="50"
+                  required>
+                <strong class="bmd-label-static">
+                  Use entre 1 y 50 carácteres, sin números
+                </strong>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <input
+                  #email
+                  id="email"
+                  name="email"
+                  ngModel
+                  type="email"
+                  class="form-control"
+                  placeholder="Correo Electronico"
+                  minlength="1"
+                  maxlength="70"
+                  required>
+                <strong class="bmd-label-static">
+                  Use entre 1 y 70 carácteres, sin espacios
+                </strong>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-6">
+                <input
+                  #direccion
+                  id="direccion"
+                  name="direccion"
+                  ngModel
+                  type="text"
+                  class="form-control"
+                  placeholder="Direccion"
+                  minlength="1"
+                  maxlength="70"
+                  required>
+                <strong class="bmd-label-static">
+                  Use entre 1 y 70 carácteres
+                </strong>
+              </div>
+              <div class="col-sm-6">
+                <input
+                  #telefono
+                  id="telefono"
+                  name="telefono"
+                  ngModel
+                  type="number"
+                  minlength="6"
+                  maxlength="10"
+                  class="form-control"
+                  placeholder="Telefono"
+                  required>
+                <strong class="bmd-label-static">
+                  Use entre 6 y 10 carácteres
+                </strong>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-12">
+              <textarea #descripcion
+                        id="descripcion"
+                        name="descripcion"
+                        ngModel
+                        rows="3"
+                        placeholder="Descripcion"
+                        class="form-control"
+                        required></textarea>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-6">
+                <input
+                  #password_1
+                  id="password_1"
+                  name="password_1"
+                  ngModel
+                  type="password"
+                  class="form-control"
+                  minlength="8"
+                  maxlength="25"
+                  placeholder="Escriba su contraseña"
+                  required>
+              </div>
+              <div class="col-sm-6">
+                <input
+                  #password_2
+                  [value]=""
+                  id="password_2"
+                  name="password_2"
+                  ngModel
+                  type="password"
+                  class="form-control"
+                  minlength="8"
+                  maxlength="25"
+                  placeholder="Repita su contraseña"
+                  required>
+              </div>
+              <div class="col-sm-12">
+                <strong class="bmd-label-static">
+                  Use entre 8 y 25 carácteres
+                </strong>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer text-muted">
+            <button (click)="showRegistroForm()"
+                    type="button"
+                    class="btn btn-primary active"
+                    role="button"
+                    aria-pressed="true">
+              <i class="fa fa-arrow-left"></i>
+              Volver al inicio de sesion
+            </button>
+            <button type="submit" class="btn btn-success active">
+              <i class="fa fa-user-plus"></i>
+              Registrarse
+            </button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>

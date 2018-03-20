@@ -1,0 +1,32 @@
+
+<div class="container pull-bottom-5p">
+  <h2 class="text-left">
+    Tutores
+  </h2>
+  <div class="row">
+    <ng-container *ngFor="let tutor of tutores">
+      <div class="col-md-3 margin-bottom-5p" *ngIf="tutor.materias > 0">
+        <div class="card">
+          <img class="card-img-top rounded-circle" src="https://openclipart.org/image/2400px/svg_to_png/190113/1389952697.png" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title bold user-tutor">
+              @{{ tutor.username }}
+            </h5>
+            <h6 class="text-left">
+              {{ tutor.nombre_completo }}
+            </h6>
+            <p class="card-text">
+              {{ tutor.descripcion }}
+            </p>
+            <p class="bold">
+              Materias: <span class="text-info">{{ tutor.materias }}</span>
+            </p>
+            <a routerLink="/tutor/{{ tutor.id }}" class="btn btn-outline-primary">
+              Ver Perfil
+            </a>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

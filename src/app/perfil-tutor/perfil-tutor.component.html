@@ -1,0 +1,72 @@
+<div class="container pull-bottom-2p">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title bold user-tutor">
+            @{{ tutor.username }}
+          </h5>
+          <h6 class="text-left">
+            {{ tutor.nombre_completo }}
+          </h6>
+          <p class="card-text">
+            Se unio en : {{ tutor.fecha_creacion }}
+          </p>
+          <p class="card-text">
+            {{ tutor.descripcion }}
+          </p>
+          <p class="bold">
+            Correo : <strong class="text-info">{{ tutor.email }}</strong>
+          </p>
+          <p class="bold">
+            Materias: <span class="text-info">{{ tutor.materias }}</span>
+          </p>
+          <p>
+            Telefono: {{ tutor.telefono }}
+          </p>
+          <p>
+            Direccion: {{ tutor.direccion }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8 card">
+      <h3 class="text-center padding-top-1p">
+        Materias de <span class="bold user-tutor">@{{ tutor.username }}</span>
+      </h3>
+      <table class="table table-bordered table-striped table-heading table-hover">
+        <thead>
+        <tr>
+          <th class="text-center">
+            Materia
+          </th>
+          <th class="text-center">
+            Valor por hora
+          </th>
+          <th class="text-center">
+            Acciones
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let materia of materias">
+          <td class="text-center">
+            {{ materia.nombre }}
+          </td>
+          <td class="text-center">
+            <span class="text-teal">${{ materia.precio | number }}</span>
+          </td>
+          <td class="text-center">
+            <button mat-raised-button (click)="openDialog(materia.id, materia.nombre, materia.precio, tutor.id)"
+                    class="btn btn-outline-primary btn-xs"
+                    matTooltip="Contratar"
+                    [matTooltipPosition]="position">
+              <i class="fa fa-send"></i>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

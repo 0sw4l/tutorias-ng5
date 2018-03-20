@@ -1,0 +1,79 @@
+<h2 mat-dialog-title class="text-center">
+  Formato de solicitud para tutoria de la materia <strong class="text-info">{{ data.materia }}</strong>
+</h2>
+
+<mat-dialog-content>
+  <p class="text-center">
+    el tutor cobra <strong class="text-success">{{ data.precio | number }}</strong> COP
+    por hora de tutoría de esta materia
+  </p>
+
+  <div class ="container">
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="mr-2" for="num-horas"> Numero de horas</label>
+          <input id="num-horas"
+                 [(ngModel)]="horas"
+                 class="form-control"
+                 type="number"
+                 name="quantity" min="1" max="5"
+                 placeholder="escriba un valor entre 1 y 5">
+          <p *ngIf="horas < 0 || horas > 5 || horas === 0" class="text-danger">
+            El numero de horas es invalido <i class="fa fa-close"></i>
+          </p>
+          <p *ngIf="horas > 0 && horas <= 5" class="text-success">
+            El numero de horas es correcto <i class="fa fa-check"></i>
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="alert alert-success text-center"  *ngIf="horas > 0 && horas <= 5 && data.precio > 0">
+          El total del servicio es de $<strong>{{ data.precio * horas | number }}</strong>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        Fecha de la tutoria
+        <br>
+        <input matInput
+               [matDatepicker]="picker"
+               [(ngModel)]="selectedDate"
+               name="date"
+               placeholder="Escoger una fecha">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi="true" #picker></mat-datepicker>
+      </div>
+      <div class="col-md-6">
+        Hora de la tutoria
+        <input type="time" [(ngModel)]="selectedTime" class="form-control" atp-time-picker value="8:00"/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+          <textarea #descripcion
+                    id="descripcion"
+                    name="descripcion"
+                    [(ngModel)]="mensaje"
+                    rows="3"
+                    placeholder="Escribele un mensaje al tutor"
+                    class="form-control"></textarea>
+      </div>
+    </div>
+
+  </div>
+
+</mat-dialog-content>
+
+<div mat-dialog-actions>
+  <button mat-button  [mat-dialog-close]="true" class="btn btn-outline-danger">
+    Cerrar
+  </button>
+  <div *ngIf="selectedDate && selectedTime && mensaje && horas > 0 && horas <= 5">
+    <button mat-button class="btn btn-outline-success ml-2" (click)="sendRequest()">
+      Enviar Solicitud <i class="fa fa-send"></i>
+    </button>
+  </div>
+</div>

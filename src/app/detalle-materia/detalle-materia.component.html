@@ -1,0 +1,57 @@
+<div class="container pull-bottom-5p">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card border-primary mb-3" style="max-width: 18rem;">
+        <div class="card-header">Informacion de <span class="materia">{{ materia }}</span></div>
+        <div class="card-body text-primary">
+          <h5 class="card-title">{{ materia }}</h5>
+          <p class="card-text">{{ descripcion }}</p>
+          <p *ngIf="tutores > 0; else emptyTutoresText">
+            Tutores: <strong>{{ tutores }}</strong>
+          </p>
+          <ng-template #emptyTutoresText>
+            <strong class="text-warning">
+              Esta materia no tiene tutores
+            </strong>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8" *ngIf="tutores > 0; else emptyTutoresAlert">
+      <div class="alert alert-info text-center" role="alert">
+        Para ver el perfil de los tutores, haga click sobre alguno de los elementos.
+      </div>
+      <div class="list-group">
+        <ng-container *ngFor="let tutor of usuarios">
+          <a class="list-group-item list-group-item-action flex-column align-items-start list-view-item"
+             routerLink="/tutor/{{ tutor.user_id }}">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1 text-white">{{ tutor.nombre_tutor }} <span class="user">@{{ tutor.user_tutor }}</span>
+              </h5>
+              <small class="text-white">
+                <h6>
+                  Valor hora: <span class="bold">${{ tutor.precio | number }}</span>
+                </h6>
+              </small>
+            </div>
+            <p class="mb-1 text-white">
+              {{ tutor.descripcion_tutor }}
+            </p>
+          </a>
+        </ng-container>
+      </div>
+    </div>
+
+    <ng-template #emptyTutoresAlert>
+      <div class="col-md-8">
+        <div class="alert alert-danger text-center" role="alert" >
+          Actualmente la materia <strong>{{ materia }}</strong> no tiene
+          tutores disponibles :(
+        </div>
+      </div>
+    </ng-template>
+
+  </div>
+</div>
+
+

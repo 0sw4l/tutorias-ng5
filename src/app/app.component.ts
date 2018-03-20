@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  @Input() public login: boolean;
+
+  constructor(private router: Router) {
+    this.login = !!localStorage.getItem('token');
+  }
+
+  setLoginValue(value): void {
+    console.log(value);
+    this.login = value;
+    this.router.navigate(['inicio']);
+  }
+
+  logout(value): void {
+    console.log(value);
+    this.login = value;
+    this.router.navigate(['']);
+  }
+
+
+
 }
