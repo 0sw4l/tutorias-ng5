@@ -24,6 +24,7 @@ import {
 } from '@angular/material';
 import {ApiService} from './services/api.service';
 import { DialogSolicitudComponent } from './dialog-solicitud/dialog-solicitud.component';
+import {ForbiddenValidatorDirective} from './directives/forbidden-name.directive';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { DialogSolicitudComponent } from './dialog-solicitud/dialog-solicitud.co
     MateriasComponent,
     TutoresComponent,
     MateriasUsuarioComponent,
-    DialogSolicitudComponent
+    DialogSolicitudComponent,
+    ForbiddenValidatorDirective
   ],
   entryComponents: [
     DialogSolicitudComponent
@@ -69,7 +71,8 @@ import { DialogSolicitudComponent } from './dialog-solicitud/dialog-solicitud.co
   exports: [
     MatSnackBarModule,
     NoopAnimationsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ForbiddenValidatorDirective
   ]
 })
 export class AppModule { }
