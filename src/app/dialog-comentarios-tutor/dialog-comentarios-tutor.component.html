@@ -1,0 +1,48 @@
+<h2 mat-dialog-title class="text-center">
+  Opiniones
+</h2>
+
+<mat-dialog-content>
+  <div class ="container">
+    <h2 class="text-center">
+      Opiniones: <strong class="text-info">{{ cantidad }}</strong>
+    </h2>
+    <table class="table table-bordered table-striped table-heading table-hover">
+      <thead>
+      <tr>
+        <th class="text-center">
+          Usuario
+        </th>
+        <th class="text-center">
+          Opinion
+        </th>
+        <th class="text-center">
+          Calificacion
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let opinion of opiniones" [hidden]="!opinion.calificacion">
+        <td class="text-center">
+          @{{ opinion.username_interesado }}
+        </td>
+        <td class="text-center">
+          {{ opinion.comentario }}
+        </td>
+        <td class="text-center">
+          <ng-template ngFor [ngForOf]="createRange(opinion.calificacion)">
+            <i class="fa fa-star text-yellow"></i>
+          </ng-template>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+</mat-dialog-content>
+
+<div mat-dialog-actions>
+  <button mat-button  [mat-dialog-close]="true" class="btn btn-outline-danger">
+    Cerrar
+  </button>
+</div>

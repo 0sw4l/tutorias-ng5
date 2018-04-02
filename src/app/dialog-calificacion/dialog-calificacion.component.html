@@ -1,0 +1,39 @@
+<h2 mat-dialog-title class="text-center">
+  Califica esta tutoria
+</h2>
+
+<mat-dialog-content>
+  <div class ="container">
+
+    <div class="row" align="center">
+      <div class="col-md-12">
+        <div class="value-set"></div>
+        <h1 *ngIf="rating">
+          Calificacion: <strong class="text-info">{{ rating }}</strong>
+        </h1>
+      </div>
+      <div class="col-md-12">
+          <textarea #descripcion
+                    id="descripcion"
+                    name="descripcion"
+                    [(ngModel)]="comentario"
+                    rows="3"
+                    placeholder="Dejale un comentario al tutor"
+                    class="form-control"></textarea>
+      </div>
+    </div>
+
+  </div>
+
+</mat-dialog-content>
+
+<div mat-dialog-actions>
+  <button mat-button  [mat-dialog-close]="true" class="btn btn-outline-danger">
+    Cerrar
+  </button>
+  <div *ngIf="rating">
+    <button mat-button class="btn btn-outline-success ml-2" (click)="sendRequest()">
+      Calificar <i class="fa fa-star"></i>
+    </button>
+  </div>
+</div>

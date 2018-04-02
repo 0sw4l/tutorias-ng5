@@ -45,7 +45,8 @@ export class DialogSolicitudComponent {
       'descripcion': this.mensaje,
       'fecha': this.selectedDate.toISOString().slice(0, 10),
       'hora': this.selectedTime,
-      'interesado': localStorage.getItem('user_id')
+      'interesado': localStorage.getItem('user_id'),
+      'horas': this.horas
     };
   }
 

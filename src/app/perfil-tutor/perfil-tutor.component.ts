@@ -4,6 +4,8 @@ import {ActivatedRoute} from '@angular/router';
 import { DecimalPipe } from '@angular/common';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material';
 import {DialogSolicitudComponent} from '../dialog-solicitud/dialog-solicitud.component';
+import {DialogCalificacionComponent} from '../dialog-calificacion/dialog-calificacion.component';
+import {DialogComentariosTutorComponent} from '../dialog-comentarios-tutor/dialog-comentarios-tutor.component';
 declare var jquery: any;
 declare var $: any;
 
@@ -50,6 +52,27 @@ export class PerfilTutorComponent implements OnInit {
         'materia_tutor_id': materia_tutor_id,
         'precio': precio,
         'tutor_id': tutor_id
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
+  createRange(number) {
+    const items: number[] = [];
+    for (let i = 1; i <= number; i++) {
+      items.push(i);
+    }
+    return items;
+  }
+
+  openDialogComentarios(id): void {
+    const dialogRef = this.dialog.open(DialogComentariosTutorComponent, {
+      width: '950px',
+      data: {
+        'id': id
       }
     });
 

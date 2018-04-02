@@ -13,6 +13,12 @@
     <div class="col-md-8">
       <h2 class="text-center">
         Mis materias <i class="fa fa-heart text-red"></i>
+        <button class="btn btn-outline-info"
+                (click)="fetchMateriasUsuario()"
+                matTooltip="Guardar Cambios"
+                [matTooltipPosition]="position">
+          <i class="fa fa-refresh"></i>
+        </button>
       </h2>
       <table class="table table-bordered table-striped table-heading table-hover">
         <thead>

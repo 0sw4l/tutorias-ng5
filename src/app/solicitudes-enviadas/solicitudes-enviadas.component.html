@@ -1,0 +1,76 @@
+<div class="container pull-bottom-5p margin-bottom-5p">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="text-center">
+        Solicitudes Enviadas
+        <button class="btn btn-outline-success" (click)="fetchData()">
+          <i class="fa fa-refresh"></i>
+        </button>
+      </h2>
+    </div>
+    <div class="col-md-12 pull-bottom-5p" *ngFor="let solicitud of solicitudes">
+      <div class="card text-white text-center" [ngClass]="getCurrentClass(solicitud)">
+        <div class="card-header">
+            <h3>
+              {{ getTitle(solicitud) }}
+            </h3>
+            <ng-template ngFor [ngForOf]="createRange(solicitud.calificacion)">
+              <i class="fa fa-star text-yellow"></i>
+            </ng-template>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">
+            <strong class="pull-left">
+              {{ solicitud.nombre_tutor }}, {{ solicitud.nombre_materia }}
+            </strong>
+            <span class="pull-right">
+              $ <strong>{{ solicitud.valor | number }}</strong>
+            </span>
+          </h5>
+          <br>
+          <div class="row">
+            <div class="col-md-12">
+              <p class="pull-left">
+                Fecha :
+                <strong>{{ solicitud.fecha }}</strong>
+                a las
+                <strong>{{ solicitud.hora }}</strong>
+              </p>
+
+              <p class="pull-right">
+                Enviada :
+                <strong>{{ solicitud.fecha_creacion }}</strong>
+                a las
+                <strong>{{ solicitud.hora_creacion }}</strong>
+              </p>
+
+            </div>
+
+            <div class="col-md-12">
+              <p class="text-justify">
+                Mensaje: {{ solicitud.descripcion }}
+              </p>
+              <p class="text-justify" *ngIf="!solicitud.calificacion;">
+                Comentario: {{ solicitud.comentario }}
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+        <div class="card-footer text-muted">
+          <button type="button" (click)="cancelar(solicitud.id)" class="btn btn-outline-danger" *ngIf="!solicitud.cancelada && !solicitud.rechazada && !solicitud.finalizada">
+            Cancelar Tutoria <i class="fa fa-close text-danger"></i>
+          </button>
+          <button type="button" (click)="openDialog(solicitud.id)" class="btn btn-outline-success" *ngIf="solicitud.finalizada && !solicitud.calificacion">
+            Calificar Tutoria <i class="fa fa-check text-success"></i>
+          </button>
+          <button type="button" (click)="archivar(solicitud.id)" class="btn btn-outline-info" *ngIf="solicitud.finalizada || solicitud.rechazada || solicitud.cancelada">
+            Archivar Solicitud <i class="fa fa-archive"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

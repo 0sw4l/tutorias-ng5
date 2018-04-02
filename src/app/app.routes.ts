@@ -6,6 +6,8 @@ import {DetalleMateriaComponent} from './detalle-materia/detalle-materia.compone
 import {PerfilTutorComponent} from './perfil-tutor/perfil-tutor.component';
 import {PerfilUsuarioComponent} from './perfil-usuario/perfil-usuario.component';
 import {MateriasUsuarioComponent} from './materias-usuario/materias-usuario.component';
+import {SolicitudesEnviadasComponent} from './solicitudes-enviadas/solicitudes-enviadas.component';
+import {SolicitudesRecibidasComponent} from './solicitudes-recibidas/solicitudes-recibidas.component';
 
 const APP_ROUTES: Routes = [
   { path: 'inicio', component: InicioComponent },
@@ -15,6 +17,8 @@ const APP_ROUTES: Routes = [
   { path: 'tutor/:id', component: PerfilTutorComponent },
   { path: 'perfil', component: PerfilUsuarioComponent },
   { path: 'mis-materias', component: MateriasUsuarioComponent },
+  { path: 'solicitudes-enviadas', component: SolicitudesEnviadasComponent },
+  { path: 'solicitudes-recibidas', component: SolicitudesRecibidasComponent},
   { path: '**', pathMatch: 'full', redirectTo: '' }
 ];
 

@@ -27,6 +27,16 @@
           <p>
             Direccion: {{ tutor.direccion }}
           </p>
+          <p>
+            Calificacion : {{ tutor.calificacion }}
+            <br>
+            <ng-template ngFor [ngForOf]="createRange(tutor.calificacion)">
+              <i class="fa fa-star text-yellow"></i>
+            </ng-template>
+          </p>
+          <button class="btn btn-lg btn-primary active" (click)="openDialogComentarios(tutor.id)">
+            Ver Opiniones <i class="fa fa-comment"></i>
+          </button>
         </div>
       </div>
     </div>

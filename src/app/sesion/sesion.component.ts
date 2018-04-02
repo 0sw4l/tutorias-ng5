@@ -13,7 +13,7 @@ declare var $: any;
   styleUrls: ['./sesion.component.css']
 })
 export class SesionComponent implements OnInit {
-  BASE_URL = 'http://188.166.252.214/rest-auth/login/';
+  BASE_URL = 'http://localhost:8000/rest-auth/login/';
   @Input() login: boolean;
   @Output() setLoginValue: EventEmitter<any> = new EventEmitter<any>();
   error_fields = false;
@@ -100,7 +100,7 @@ export class SesionComponent implements OnInit {
   public handleErrorRegister(response: Response): void {
     console.log(response['error']);
     const data = response['error'];
-    for (const key in data) {
+    for (let key in data) {
       console.log(key);
       data[key].forEach(item => {
         this.showNotify(key + ': ' + item, 'danger');

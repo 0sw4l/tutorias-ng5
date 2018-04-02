@@ -25,6 +25,10 @@ import {
 import {ApiService} from './services/api.service';
 import { DialogSolicitudComponent } from './dialog-solicitud/dialog-solicitud.component';
 import {ForbiddenValidatorDirective} from './directives/forbidden-name.directive';
+import { SolicitudesEnviadasComponent } from './solicitudes-enviadas/solicitudes-enviadas.component';
+import { SolicitudesRecibidasComponent } from './solicitudes-recibidas/solicitudes-recibidas.component';
+import { DialogCalificacionComponent } from './dialog-calificacion/dialog-calificacion.component';
+import { DialogComentariosTutorComponent } from './dialog-comentarios-tutor/dialog-comentarios-tutor.component';
 
 
 @NgModule({
@@ -40,10 +44,16 @@ import {ForbiddenValidatorDirective} from './directives/forbidden-name.directive
     TutoresComponent,
     MateriasUsuarioComponent,
     DialogSolicitudComponent,
-    ForbiddenValidatorDirective
+    ForbiddenValidatorDirective,
+    SolicitudesEnviadasComponent,
+    SolicitudesRecibidasComponent,
+    DialogCalificacionComponent,
+    DialogComentariosTutorComponent
   ],
   entryComponents: [
-    DialogSolicitudComponent
+    DialogSolicitudComponent,
+    DialogCalificacionComponent,
+    DialogComentariosTutorComponent
   ],
   imports: [
     BrowserModule,

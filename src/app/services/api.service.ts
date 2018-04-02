@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable()
 export class ApiService {
-  BASE_URL = 'http://188.166.252.214';
+  BASE_URL = 'http://localhost:8000';
 
   constructor(private http: HttpClient) {
   }
@@ -75,6 +75,26 @@ export class ApiService {
 
   enviarSolicitud(data) {
     return this.http.post(this.BASE_URL + '/api/app/viewsets/solicitudes/', data, this.getHeaders());
+  }
+
+  calificarTutoria(id, data) {
+    return this.http.put(this.BASE_URL + '/api/app/viewsets/solicitudes/' + id + '/calificar/', data, this.getHeaders());
+  }
+
+  solicitudesEnviadas(id) {
+    return this.http.get(this.BASE_URL + '/api/app/viewsets/solicitudes/' + id + '/enviadas/', {headers: this.getHeaders()});
+  }
+
+  solicitudesRecibidas(id) {
+    return this.http.get(this.BASE_URL + '/api/app/viewsets/solicitudes/' + id + '/recibidas/', {headers: this.getHeaders()});
+  }
+
+  solicitudAction(id, action) {
+    return this.http.get(this.BASE_URL + '/api/app/viewsets/solicitudes/' + id + action, {headers: this.getHeaders()});
+  }
+
+  getOpinionesUsuario(id) {
+    return this.http.get(this.BASE_URL + '/api/app/viewsets/usuarios/' + id + '/solicitudes/', {headers: this.getHeaders()});
   }
 
 }

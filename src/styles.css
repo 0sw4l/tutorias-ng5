@@ -80,3 +80,8 @@ bootstrap-growl {
   top:8px;
   z-index:10;
 }
+
+
+.value-set i {
+  font-size: 45px !important;
+}
